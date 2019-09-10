@@ -1,0 +1,32 @@
+---
+title: "Diamond sizes"
+date: 2016-08-25
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(ggplot2)
+library(dplyr)
+
+smaller <- diamonds %>% 
+  filter(carat <= 2.5)
+```
+
+We have data about `r nrow(diamonds)` diamonds. Only 
+`r nrow(diamonds) - nrow(smaller)` are larger than
+2.5 carats. The distribution of the remainder is shown
+below:
+
+```{r, echo = FALSE}
+smaller %>% 
+  ggplot(aes(carat)) + 
+  geom_freqpoly(binwidth = 0.01)
+```
+
+So this written command doesn't seem to consistently work... R is a very strange coding system, almost like a step by step debugger is simply built into how it works. This seems useful for simple projects so far. CHANGES. Didn't seem to pickup on the changes...Ran it twice and got an error something about a duplicate label..huh.Knitr and pandoc are librarys that make pretty output...but idk how they work exactly.
+
+```{r}
+rmarkdown::render("notebook.Rmd")
+```
+
+
